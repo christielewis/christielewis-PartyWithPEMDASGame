@@ -1,5 +1,7 @@
 # christielewis-PartyWithPEMDASGame
 
+![Proj1Wireframe](PEMDASParty.png)
+
 ### Overview
 * 1.
 * 2.
@@ -14,7 +16,7 @@
 * 7. Get 10 correct, game over; you win the game.
 * 8. If the computer gets to 10, game over; you lose the game.
 
-### User stories
+### User Stories
 * 1. Player will click "Start" button.
 * 2. A random expression will appear onscreen with randomly generated numbers (0-12).
 * 3. Player has to input answers into input fields and click "Submit" button to submit answer.
