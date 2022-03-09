@@ -9,13 +9,15 @@ const resetButton = document.getElementById("reset");
 // Timers
 let timerEl = document.getElementById("timer-num");
 let timeGo = true;
+let timeLeft = 35;
+let timerId;
 
-const countdown35 = () => {
-    let timeLeft = 35;
+const countdown = (time) => {
+    // timeLeft = time;
     timerId = setInterval(function() {
-        if(timeLeft > 0) {
-            timeLeft --;
-            timerEl.innerText = `${timeLeft}s`
+        if(time > 0) {
+            time --;
+            timerEl.innerText = `${time}s`
         }
     }, 1000);
     // console.log(timerId)
@@ -162,7 +164,8 @@ const randExp = () => {
     let num3 = randNum(0, 12);
     let num4 = randNum(0, 12);
     let numExpo = randNum(0, 2);
-    let level1Expressions = [
+
+    let mathExpressions = [
         `${num1}<sup>${numExpo}</sup> + ${num2} / ${num3} =`,
         `${num1} + ${num2} * ${num3} =`,
         `${num1} - ${num2} * ${num3}<sup>${numExpo}</sup> =`,
@@ -175,7 +178,7 @@ const randExp = () => {
         `${num1} - ${num2}<sup>${numExpo}</sup> / ${num3} =`
     ]
     
-    let level1Solutions = [
+    let mathSolutions = [
         num1 ** numExpo + num2 / num3,
         num1 + num2 * num3,
         num1 - num2 * num3 ** numExpo,
@@ -188,11 +191,11 @@ const randExp = () => {
         num1 - num2 ** numExpo / num3
     ]
 
-    let randomIdx = Math.floor(Math.random() * level1Expressions.length);
+    let randomIdx = Math.floor(Math.random() * mathExpressions.length);
     console.log(randomIdx);
-    expDisplay = level1Expressions[randomIdx];
+    expDisplay = mathExpressions[randomIdx];
     console.log(expDisplay);
-    expSolution = level1Solutions[randomIdx];
+    expSolution = mathSolutions[randomIdx];
     console.log(expSolution);
     mathExp.innerHTML = `${expDisplay}`;
 
@@ -200,13 +203,25 @@ const randExp = () => {
 
 randExp();
 // randExp(level1Expressions, level1Solutions);
+// let round = 1;
 
 const nextExp = () => {
     let mathExpEl = document.getElementById("math-exp");
     mathExpEl.innerText = "";
     randExp();
+    if(timeLeft >= 5) {
+        timeLeft -= 5;
+    }
+    clearInterval(timerId);
+    countdown(timeLeft);
+    // else statement for timeLeft = 0
+    // if(round === 1) {
+    //     timeLeft = 30;
+    // }
+    // timeLeft -= 5;
+    // countdown(timeLeft);
+    // round++;
 }
-
 nextButton.addEventListener('click', nextExp);
 
 // let level1Expressions = {
