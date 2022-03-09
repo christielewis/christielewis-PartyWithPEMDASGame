@@ -1,0 +1,24 @@
+Pseudo coding
+
+Buttons(event listeners):
+Start
+Pause
+Restart
+Submit
+Next
+
+Functions needed:
+startGame (startBtn)
+pauseGame (pauseBtn)
+restartGame (restartBtn)
+submitAns (submitBtn)
+nextMathExp (nextBtn)
+timer (Do I need a different timer function for each new interval - w/in this function, disable event listeners and ability to input anything)
+random number generator
+randomMathExp1 (picks random expression from the "easy" expressions)
+randomMathExp2 (picks random expression from the "hard" expressions)
+compute correct answer from expression picked and numbers generated in each case
+input (takes answer player submits)
+answer comparison (compares player input to correct answer - should be a boolean)
+scoreboard (Add to your score or comp score - if else)
+function with list of expressions
