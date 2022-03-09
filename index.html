@@ -9,6 +9,61 @@
     <title>Party with Professor PEMDAS</title>
 </head>
 <body>
-    
+    <header>
+        <h1>Party with Professor PEMDAS</h1>
+    </header>
+    <section id="timer">
+
+    </section>
+    <section id="scoreboard">
+        <ul>
+            Scoreboard
+            <li>You: <span id="you-score">0</span></li>
+            <li>Computer: <span id="comp-score">0</span></li>
+        </ul>
+    </section>
+    <section id="game-rules">
+        <ul>
+            GAME Rules:
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </section>
+    <section id="game-board">
+        <h2 id="math-exp">
+
+        </h2>
+        <input type="number" name="" id="answer">
+        <input type="submit" value="Submit">
+        <button id="next">Next</button>
+    </section>
+    <section id="game-status">
+
+    </section>
+    <section id="prof-gifs">
+        <img src="data:image/jpeg;base64,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" alt="">
+    </section>
+    <section id="control-center">
+        <button id="start">Start</button>
+        <button id="pause">Pause</button>
+        <button id="restart">Restart</button>
+    </section>
+    <section id="pemdas-rules">
+        <ul>
+            PEMDAS Rules:
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </section>
+    <footer>
+        <ul>
+            <li id="github">GitHub</li>
+            <li id="linkedin">LinkedIn</li>
+        </ul>
+    </footer>
 </body>
 </html>
