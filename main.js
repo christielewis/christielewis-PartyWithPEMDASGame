@@ -83,15 +83,6 @@ const countdown12 = () => {
 // countdown12();
 
 // Random number generator that takes 2 parameter
-const randNum = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1));
-}
-
-let num1 = randNum(0, 12);
-let num2 = randNum(0, 12);
-let num3 = randNum(0, 12);
-let num4 = randNum(0, 12);
-let numExpo = randNum(0, 2);
 
 // console.log(num1);
 // console.log(num2);
@@ -115,34 +106,49 @@ let numExpo = randNum(0, 2);
 // let lev1Exp10 = `${num1} - (${num2}^${numExpo}) / ${num3}`
 
 // let level1Expressions = [lev1Exp1, lev1Exp2, lev1Exp3, lev1Exp4, lev1Exp5, lev1Exp6, lev1Exp7, lev1Exp8, lev1Exp9, lev1Exp10]
-let level1Expressions = [
-    `${num1}<sup>${numExpo}</sup> + ${num2} / ${num3}`,
-    `${num1} + ${num2} * ${num3}`,
-    `${num1} - ${num2} * ${num3}<sup>${numExpo}</sup>`,
-    `${num1} / ${num2} + ${num3}`,
-    `${num1}<sup>${numExpo}</sup> / ${num2} - (${num3}<sup>${numExpo}</sup>`,
-    `${num1}<sup>${numExpo}</sup> + ${num2}<sup>${numExpo}</sup> + ${num3}`,
-    `${num1}<sup>${numExpo}</sup> - ${num2} - ${num3}<sup>${numExpo}</sup>`,
-    `${num1} / ${num2}<sup>${numExpo}</sup> * ${num3}`,
-    `${num1}<sup>${numExpo}</sup> + ${num2}<sup>${numExpo}</sup> - ${num3}<sup>${numExpo}</sup>`,
-    `${num1} - ${num2}<sup>${numExpo}</sup> / ${num3}`
-]
+const randNum = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1));
+}
 
-let level1Solutions = [
-    num1 ** numExpo + num2 / num3,
-    num1 + num2 * num3,
-    num1 - num2 * num3 ** numExpo,
-    num1 / num2 + num3,
-    num1 ** numExpo / num2 - num3 ** numExpo,
-    num1 ** numExpo + num2 ** numExpo + num3,
-    num1 ** numExpo - num2 - num3 ** numExpo,
-    num1 / num2 ** numExpo * num3,
-    num1 ** numExpo + num2 ** numExpo - num3 ** numExpo,
-    num1 - num2 ** numExpo / num3
-]
+// let num1 = randNum(0, 12);
+// let num2 = randNum(0, 12);
+// let num3 = randNum(0, 12);
+// let num4 = randNum(0, 12);
+// let numExpo = randNum(0, 2);
+// let num1 =0;
+// let num2 =0;
+// let num3 =0;
+// let num4 =0;
+// let numExpo =0;
 
-console.log(level1Expressions);
-console.log(level1Solutions);
+// let level1Expressions = [
+//     `${num1}<sup>${numExpo}</sup> + ${num2} / ${num3} =`,
+//     `${num1} + ${num2} * ${num3} =`,
+//     `${num1} - ${num2} * ${num3}<sup>${numExpo}</sup> =`,
+//     `${num1} / ${num2} + ${num3} =`,
+//     `${num1}<sup>${numExpo}</sup> / ${num2} - ${num3}<sup>${numExpo}</sup> =`,
+//     `${num1}<sup>${numExpo}</sup> + ${num2}<sup>${numExpo}</sup> + ${num3} =`,
+//     `${num1}<sup>${numExpo}</sup> - ${num2} - ${num3}<sup>${numExpo}</sup> =`,
+//     `${num1} / ${num2}<sup>${numExpo}</sup> * ${num3} =`,
+//     `${num1}<sup>${numExpo}</sup> + ${num2}<sup>${numExpo}</sup> - ${num3}<sup>${numExpo}</sup> =`,
+//     `${num1} - ${num2}<sup>${numExpo}</sup> / ${num3} =`
+// ]
+
+// let level1Solutions = [
+//     num1 ** numExpo + num2 / num3,
+//     num1 + num2 * num3,
+//     num1 - num2 * num3 ** numExpo,
+//     num1 / num2 + num3,
+//     num1 ** numExpo / num2 - num3 ** numExpo,
+//     num1 ** numExpo + num2 ** numExpo + num3,
+//     num1 ** numExpo - num2 - num3 ** numExpo,
+//     num1 / num2 ** numExpo * num3,
+//     num1 ** numExpo + num2 ** numExpo - num3 ** numExpo,
+//     num1 - num2 ** numExpo / num3
+// ]
+
+// console.log(level1Expressions);
+// console.log(level1Solutions);
 
 let expDisplay = null;
 let expSolution = null;
@@ -150,17 +156,58 @@ let expSolution = null;
 let mathExp = document.getElementById("math-exp");
 
 // Pick random expression
-const randExp = (expArr, solArr) => {
-    let randomIdx = Math.floor(Math.random() * expArr.length);
+const randExp = () => {
+    let num1 = randNum(0, 12);
+    let num2 = randNum(0, 12);
+    let num3 = randNum(0, 12);
+    let num4 = randNum(0, 12);
+    let numExpo = randNum(0, 2);
+    let level1Expressions = [
+        `${num1}<sup>${numExpo}</sup> + ${num2} / ${num3} =`,
+        `${num1} + ${num2} * ${num3} =`,
+        `${num1} - ${num2} * ${num3}<sup>${numExpo}</sup> =`,
+        `${num1} / ${num2} + ${num3} =`,
+        `${num1}<sup>${numExpo}</sup> / ${num2} - ${num3}<sup>${numExpo}</sup> =`,
+        `${num1}<sup>${numExpo}</sup> + ${num2}<sup>${numExpo}</sup> + ${num3} =`,
+        `${num1}<sup>${numExpo}</sup> - ${num2} - ${num3}<sup>${numExpo}</sup> =`,
+        `${num1} / ${num2}<sup>${numExpo}</sup> * ${num3} =`,
+        `${num1}<sup>${numExpo}</sup> + ${num2}<sup>${numExpo}</sup> - ${num3}<sup>${numExpo}</sup> =`,
+        `${num1} - ${num2}<sup>${numExpo}</sup> / ${num3} =`
+    ]
+    
+    let level1Solutions = [
+        num1 ** numExpo + num2 / num3,
+        num1 + num2 * num3,
+        num1 - num2 * num3 ** numExpo,
+        num1 / num2 + num3,
+        num1 ** numExpo / num2 - num3 ** numExpo,
+        num1 ** numExpo + num2 ** numExpo + num3,
+        num1 ** numExpo - num2 - num3 ** numExpo,
+        num1 / num2 ** numExpo * num3,
+        num1 ** numExpo + num2 ** numExpo - num3 ** numExpo,
+        num1 - num2 ** numExpo / num3
+    ]
+
+    let randomIdx = Math.floor(Math.random() * level1Expressions.length);
     console.log(randomIdx);
-    expDisplay = expArr[randomIdx];
-    console.log(typeof(expDisplay));
-    expSolution = solArr[randomIdx];
+    expDisplay = level1Expressions[randomIdx];
+    console.log(expDisplay);
+    expSolution = level1Solutions[randomIdx];
     console.log(expSolution);
     mathExp.innerHTML = `${expDisplay}`;
 
 }
-randExp(level1Expressions, level1Solutions);
+
+randExp();
+// randExp(level1Expressions, level1Solutions);
+
+const nextExp = () => {
+    let mathExpEl = document.getElementById("math-exp");
+    mathExpEl.innerText = "";
+    randExp();
+}
+
+nextButton.addEventListener('click', nextExp);
 
 // let level1Expressions = {
 //     lev1Exp1: num1 ** numExpo + num2 / num3,
@@ -196,31 +243,31 @@ randExp(level1Expressions, level1Solutions);
 // let lev2Exp10 = `${num1} - ${num2} ** ${numExpo} / ${num3}`
 
 // console.log(level2Expressions[0]);
-let level2Expressions = [
-    `${num1}<sup>${numExpo}</sup> + ${num2} / ${num3}`,
-    `${num1} + ${num2} * ${num3}`,
-    `${num1} - ${num2} * ${num3}<sup>${numExpo}</sup>`,
-    `${num1} / ${num2} + ${num3}`,
-    `${num1}<sup>${numExpo}</sup> / ${num2} - (${num3}<sup>${numExpo}</sup>`,
-    `${num1}<sup>${numExpo}</sup> + ${num2}<sup>${numExpo}</sup> + ${num3}`,
-    `${num1}<sup>${numExpo}</sup> - ${num2} - ${num3}<sup>${numExpo}</sup>`,
-    `${num1} / ${num2}<sup>${numExpo}</sup> * ${num3}`,
-    `${num1}<sup>${numExpo}</sup> + ${num2}<sup>${numExpo}</sup> - ${num3}<sup>${numExpo}</sup>`,
-    `${num1} - ${num2}<sup>${numExpo}</sup> / ${num3}`
-]
+// let level2Expressions = [
+//     `${num1}<sup>${numExpo}</sup> + ${num2} / ${num3}`,
+//     `${num1} + ${num2} * ${num3}`,
+//     `${num1} - ${num2} * ${num3}<sup>${numExpo}</sup>`,
+//     `${num1} / ${num2} + ${num3}`,
+//     `${num1}<sup>${numExpo}</sup> / ${num2} - (${num3}<sup>${numExpo}</sup>`,
+//     `${num1}<sup>${numExpo}</sup> + ${num2}<sup>${numExpo}</sup> + ${num3}`,
+//     `${num1}<sup>${numExpo}</sup> - ${num2} - ${num3}<sup>${numExpo}</sup>`,
+//     `${num1} / ${num2}<sup>${numExpo}</sup> * ${num3}`,
+//     `${num1}<sup>${numExpo}</sup> + ${num2}<sup>${numExpo}</sup> - ${num3}<sup>${numExpo}</sup>`,
+//     `${num1} - ${num2}<sup>${numExpo}</sup> / ${num3}`
+// ]
 
-let level2Solutions = [
-    num1 ** numExpo + num2 / num3,
-    num1 + num2 * num3,
-    num1 - num2 * num3 ** numExpo,
-    num1 / num2 + num3,
-    num1 ** numExpo / num2 - num3 ** numExpo,
-    num1 ** numExpo + num2 ** numExpo + num3,
-    num1 ** numExpo - num2 - num3 ** numExpo,
-    num1 / num2 ** numExpo * num3,
-    num1 ** numExpo + num2 ** numExpo - num3 ** numExpo,
-    num1 - num2 ** numExpo / num3
-]
+// let level2Solutions = [
+//     num1 ** numExpo + num2 / num3,
+//     num1 + num2 * num3,
+//     num1 - num2 * num3 ** numExpo,
+//     num1 / num2 + num3,
+//     num1 ** numExpo / num2 - num3 ** numExpo,
+//     num1 ** numExpo + num2 ** numExpo + num3,
+//     num1 ** numExpo - num2 - num3 ** numExpo,
+//     num1 / num2 ** numExpo * num3,
+//     num1 ** numExpo + num2 ** numExpo - num3 ** numExpo,
+//     num1 - num2 ** numExpo / num3
+// ]
 
 // let makeMath = {
     //     '**': function(x, numExpo) { return x ** numExpo},
