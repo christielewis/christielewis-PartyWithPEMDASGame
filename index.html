@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <script src="./main.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" async defer></script>
     <title>Party with Professor PEMDAS</title>
 </head>
 <body>
@@ -13,7 +13,7 @@
         <h1>Party with Professor PEMDAS</h1>
     </header>
     <section id="timer">
-
+        Timer: <span id="timer-num">30s</span>
     </section>
     <section id="scoreboard">
         <ul>
@@ -35,7 +35,7 @@
         <h2 id="math-exp">
 
         </h2>
-        <input type="number" name="" id="answer">
+        <input type="number" id="player-ans" value="0">
         <input type="submit" value="Submit">
         <button id="next">Next</button>
     </section>
