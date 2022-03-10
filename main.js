@@ -6,14 +6,6 @@ const startButton = document.getElementById("start");
 const pauseButton = document.getElementById("pause");
 const resetButton = document.getElementById("reset");
 
-let playerAns;
-
-const answerSubmit = (event) => {
-    console.log("Hello");
-    event.preventDefault();
-    playerAns = event.target.answer.value;
-}
-
 // Timer
 let timerEl = document.getElementById("timer-num");
 // let timeGo = true;
@@ -27,6 +19,15 @@ const countdown = (time) => {
             timerEl.innerText = `${time}s`
         }
     }, 1000);
+}
+
+let playerAns;
+
+const answerSubmit = (event) => {
+    console.log("Hello");
+    event.preventDefault();
+    playerAns = event.target.answer.value;
+    clearInterval(timerId);
 }
 
 const randNum = (min, max) => {
@@ -93,10 +94,16 @@ const nextExp = () => {
     if(timeLeft >= 5) {
         timeLeft -= 5;
     }
-    clearInterval(timerId);
+    // clearInterval(timerId);
     countdown(timeLeft);
 }
 nextButton.addEventListener('click', nextExp);
+
+const startGame = () => {
+    countdown(timeLeft);
+}
+
+startButton.addEventListener('click', startGame);
 
 // let makeMath = {
     //     '**': function(x, numExpo) { return x ** numExpo},
