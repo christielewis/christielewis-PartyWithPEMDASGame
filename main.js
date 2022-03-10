@@ -1,9 +1,8 @@
 // Buttons
-// const submitButton = document.getElementById("submit");
 const nextButton = document.getElementById("next");
 
 const startButton = document.getElementById("start");
-const pauseButton = document.getElementById("pause");
+// const pauseButton = document.getElementById("pause");
 // const contButton = document.getElementById("continue");
 const resetButton = document.getElementById("reset");
 
@@ -12,6 +11,7 @@ let timerEl = document.getElementById("timer-num");
 // let timeGo = true;
 let timeLeft = 41;
 let timerId;
+let pauseTime;
 
 const countdown = (time) => {
     timerId = setInterval(function() {
@@ -27,9 +27,13 @@ let playerAns;
 const answerSubmit = (event) => {
     console.log("Hello");
     event.preventDefault();
-    playerAns = event.target.answer.value;
+    playerAns = parseInt(event.target.answer.value);
+
+    console.log(typeof(playerAns));
+   
     clearInterval(timerId);
     timerEl.innerText = `0s`
+    compareAnswers();
 }
 
 const randNum = (min, max) => {
@@ -62,6 +66,17 @@ const randExp = () => {
         `${num1} - ${num2}<sup>${numExpo}</sup> / ${num3} =`
     ]
     
+    // let sol1 = num1 ** numExpo + num2 / num3
+    // let sol2 = num1 + num2 * num3
+    // let sol3 = num1 - num2 * num3 ** numExpo
+    // let sol4 = num1 / num2 + num3
+    // let sol5 = num1 ** numExpo / num2 - num3 ** numExpo
+    // let sol6 = num1 ** numExpo + num2 ** numExpo + num3
+    // let sol7 = num1 ** numExpo - num2 - num3 ** numExpo
+    // let sol8 = num1 / num2 ** numExpo * num3
+    // let sol9 = num1 ** numExpo + num2 ** numExpo - num3 ** numExpo
+    // let sol10 = num1 - num2 ** numExpo / num3
+
     let mathSolutions = [
         num1 ** numExpo + num2 / num3,
         num1 + num2 * num3,
@@ -74,24 +89,26 @@ const randExp = () => {
         num1 ** numExpo + num2 ** numExpo - num3 ** numExpo,
         num1 - num2 ** numExpo / num3
     ]
+    // let mathSolutions = [sol1, sol2, sol3, sol4, sol5, sol6, sol7, sol8, sol9, sol10]
 
     let randomIdx = Math.floor(Math.random() * mathExpressions.length);
     console.log(randomIdx);
     expDisplay = mathExpressions[randomIdx];
     console.log(expDisplay);
     expSolution = mathSolutions[randomIdx];
-    console.log(expSolution);
+    // console.log(typeof(expSolution));
     mathExp.innerHTML = `${expDisplay}`;
 
 }
 
-randExp();
+// randExp();
 // randExp(level1Expressions, level1Solutions);
 // let round = 1;
 
 const nextExp = () => {
     let mathExpEl = document.getElementById("math-exp");
     mathExpEl.innerText = "";
+    gameStatus.innerText = "";
     randExp();
     if(timeLeft >= 5) {
         timeLeft -= 5;
@@ -102,6 +119,7 @@ const nextExp = () => {
 nextButton.addEventListener('click', nextExp);
 
 const startGame = () => {
+    randExp();
     countdown(timeLeft);
 }
 startButton.addEventListener('click', startGame);
@@ -112,9 +130,29 @@ startButton.addEventListener('click', startGame);
 // pauseButton.addEventListener('click', pauseGame);
 
 // const contGame = () => {
-//     countdown
+//     pauseTime = timeLeft;
+//     countdown(pauseTime);
 // }
 // contButton.addEventListener('click', contGame);
+
+let playerScore = document.getElementById("you-score");
+let compScore = document.getElementById("comp-score");
+let gameStatus = document.getElementById("game-status");
+
+let playerNum = 0;
+let compNum = 0;
+
+const compareAnswers = () => {
+    if(playerAns === expSolution) {
+        playerNum++;
+        playerScore.innerText = playerNum;
+        gameStatus.innerText = `Correct!`
+    } else if (playerAns !== expSolution) {
+        compNum++;
+        compScore.innerText = compNum;
+        gameStatus.innerText = `Incorrect!`
+    }
+}
 
 // let makeMath = {
     //     '**': function(x, numExpo) { return x ** numExpo},
