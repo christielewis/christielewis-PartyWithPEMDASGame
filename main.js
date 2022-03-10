@@ -135,6 +135,8 @@ startButton.addEventListener('click', startGame);
 // }
 // contButton.addEventListener('click', contGame);
 
+// User inpput validation
+
 let playerScore = document.getElementById("you-score");
 let compScore = document.getElementById("comp-score");
 let gameStatus = document.getElementById("game-status");
@@ -144,13 +146,26 @@ let compNum = 0;
 
 const compareAnswers = () => {
     if(playerAns === expSolution) {
-        playerNum++;
-        playerScore.innerText = playerNum;
+        if(playerNum < 10) {
+            playerNum++;
+            playerScore.innerText = playerNum;
+        }
         gameStatus.innerText = `Correct!`
     } else if (playerAns !== expSolution) {
-        compNum++;
-        compScore.innerText = compNum;
+        if(compNum < 10) {
+            compNum++;
+            compScore.innerText = compNum;
+        }
         gameStatus.innerText = `Incorrect!`
+    }
+}
+
+// Game Over
+
+const gameOver = () => {
+    if(playerNum === 10) {
+        nextButton.removeEventListener('click', nextExp);
+        
     }
 }
 
