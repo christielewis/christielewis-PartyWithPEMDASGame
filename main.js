@@ -25,11 +25,11 @@ const countdown = (time) => {
 let playerAns;
 
 const answerSubmit = (event) => {
-    console.log("Hello");
+    // console.log("Hello");
     event.preventDefault();
     playerAns = parseInt(event.target.answer.value);
 
-    console.log(typeof(playerAns));
+    // console.log(typeof(playerAns));
    
     clearInterval(timerId);
     timerEl.innerText = `0s`
@@ -115,12 +115,14 @@ const nextExp = () => {
     }
     // clearInterval(timerId);
     countdown(timeLeft);
+    gameForm.reset();
 }
 nextButton.addEventListener('click', nextExp);
 
 const startGame = () => {
     randExp();
     countdown(timeLeft);
+    nextButton.addEventListener('click', nextExp);
 }
 startButton.addEventListener('click', startGame);
 
@@ -140,21 +142,31 @@ startButton.addEventListener('click', startGame);
 let playerScore = document.getElementById("you-score");
 let compScore = document.getElementById("comp-score");
 let gameStatus = document.getElementById("game-status");
+let gameForm = document.getElementById("game-form");
 
 let playerNum = 0;
 let compNum = 0;
 
 const compareAnswers = () => {
+    // gameOver();
     if(playerAns === expSolution) {
-        if(playerNum < 10) {
+        if(playerNum < 2) {
             playerNum++;
             playerScore.innerText = playerNum;
+            if(playerNum === 2) {
+                gameOver();
+                gameOverMsg.innerText = `Game over. You win!`
+            }
         }
         gameStatus.innerText = `Correct!`
     } else if (playerAns !== expSolution) {
-        if(compNum < 10) {
+        if(compNum < 2) {
             compNum++;
             compScore.innerText = compNum;
+            if(compNum === 2) {
+                gameOver();
+                gameOverMsg.innerText = `Game over. You lost.`
+            }
         }
         gameStatus.innerText = `Incorrect!`
     }
@@ -162,12 +174,46 @@ const compareAnswers = () => {
 
 // Game Over
 
+let gameOverMsg = document.getElementById("game-over-msg");
+
+// const gameOverMsgs = () => {
+//     if(playerNum === 2) {
+//         gameOverMsg.innerText = `Game over. YOU WIN!`;
+//     } else if(compNum === 2) {
+//         gameOverMsg.innerText = `Game over. You lost.`;
+//     }
+// }
+
 const gameOver = () => {
-    if(playerNum === 10) {
-        nextButton.removeEventListener('click', nextExp);
-        
-    }
+    nextButton.removeEventListener('click', nextExp);
 }
+
+// const gameOver = () => {
+//     // gameOverMsgs();
+//     if(playerNum === 10) {
+//         nextButton.removeEventListener('click', nextExp);
+//         gameOverMsg.innerText = `Game over. You win!`
+//     } else if(compNum === 10) {
+//         nextButton.removeEventListener('click', nextExp);
+//         gameOverMsg.innerText = `Game over. You lost.`
+//     }
+// }
+
+// Restart
+
+const resetGame = () => {
+    mathExp.innerText = ``;
+    gameOverMsg.innerText = ``;
+    gameStatus.innerText = ``;
+    // nextButton.addEventListener('click', nextExp);
+    playerNum = 0;
+    compNum = 0;
+    playerScore.innerText = playerNum;
+    compScore.innerText = compNum;
+    gameForm.reset();
+}
+
+resetButton.addEventListener('click', resetGame);
 
 // let makeMath = {
     //     '**': function(x, numExpo) { return x ** numExpo},

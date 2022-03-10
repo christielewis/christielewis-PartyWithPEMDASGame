@@ -11,6 +11,9 @@
 <body>
     <header>
         <h1>Party with Professor PEMDAS</h1>
+        <h3 id="game-over-msg">
+
+        </h3>
     </header>
     <section id="timer">
         Timer: <span id="timer-num">40s</span>
@@ -35,7 +38,7 @@
         <h2 id="math-exp">
 
         </h2>
-        <form onSubmit="answerSubmit(event)">
+        <form id="game-form" onSubmit="answerSubmit(event)">
             <input type="text" id="player-ans" name="answer">
             <!-- <input type="number" id="player-ans" name="answer">  -->
             <input type="submit" value="Submit">
@@ -52,7 +55,7 @@
         <button id="start">Start</button>
         <!-- <button id="pause">Pause</button> -->
         <!-- <button id="continue">Continue</button> -->
-        <button id="restart">Restart</button>
+        <button id="reset">Reset</button>
     </section>
     <section id="pemdas-rules">
         <ul>
