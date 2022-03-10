@@ -20,6 +20,9 @@ const countdown = (time) => {
             if(time === 0) {
                 // timesUp();
                 document.getElementById("submit-btn").disabled = true;
+                compNum++;
+                compScore.innerText = compNum;
+                gameStatus.innerText = `Time's up! Professor P gets the point!`
             }
         }
     }, 1000);
@@ -30,7 +33,7 @@ let playerAns;
 const answerSubmit = (event) => {
     event.preventDefault();
     playerAns = parseFloat(event.target.answer.value);
-    // console.log(typeof(playerAns));
+    console.log(playerAns);
     clearInterval(timerId);
     timerEl.innerText = `0s`
     compareAnswers();
@@ -63,7 +66,18 @@ const randExp = () => {
         `${num1}<sup>${numExpo}</sup> - ${num2} - ${num3}<sup>${numExpo}</sup> =`,
         `${num1} / ${num2}<sup>${numExpo}</sup> * ${num3} =`,
         `${num1}<sup>${numExpo}</sup> + ${num2}<sup>${numExpo}</sup> - ${num3}<sup>${numExpo}</sup> =`,
-        `${num1} - ${num2}<sup>${numExpo}</sup> / ${num3} =`
+        `${num1} - ${num2}<sup>${numExpo}</sup> / ${num3} =`,
+        `(${num1} - ${num2})(${num1} + ${num2})<sup>${numExpo}</sup> = `,
+        `(${num1} + ${num2}<sup>${numExpo}</sup>) - (${num1} + ${num2} - ${num3})<sup>${numExpo}</sup> = `,
+        `${num1}(${num2}<sup>${numExpo}</sup> / ${num3}) = `,
+        `${num1} * ${num2}<sup>${numExpo}</sup> / ${num3} - (${num2})<sup>${numExpo}</sup> = `,
+        `(${num1} + ${num2})(${num1} - ${num2}) = `,
+        `${num1} + (${num2} + ${num3}<sup>${numExpo}</sup> / ${num1}) - ${num2} = `,
+        `(${num1} - ${num2})(${num2} - ${num3}) + ${num3} = `,
+        `(${num1} + ${num2})<sup>${numExpo}</sup> + ${num2}(-(${num3}<sup>${numExpo}</sup>)) = `,
+        `(${num1} + ${num2})(${num1} - ${num2})(${num2} - ${num3}) = `,
+        `${num2}(${num1} - ${num3})(${num1} + ${num3}<sup>${numExpo}</sup>) = `
+        
     ]
 
     let mathSolutions = [
@@ -76,7 +90,17 @@ const randExp = () => {
         num1 ** numExpo - num2 - num3 ** numExpo,
         num1 / num2 ** numExpo * num3,
         num1 ** numExpo + num2 ** numExpo - num3 ** numExpo,
-        num1 - num2 ** numExpo / num3
+        num1 - num2 ** numExpo / num3,
+        (num1 - num2) * (num1 + num2) ** numExpo,
+        (num1 + num2 ** numExpo) - (num1 + num2 - num3) ** numExpo,
+        num1 * (num2 ** numExpo / num3),
+        num1 * num2 ** numExpo / num3 - (num2) ** numExpo,
+        (num1 + num2) * (num1 - num2),
+        num1 + (num2 + num3 ** numExpo / num1) - num2,
+        (num1 - num2) * (num2 - num3) + num3,
+        (num1 + num2) ** numExpo + num2 * ( - (num3 ** numExpo)),
+        (num1 + num2) * (num1 - num2) * (num2 - num3),
+        num2 * (num1 - num3) * (num1 + num3 ** numExpo) * (num2)
     ]
 
     let randomIdx = Math.floor(Math.random() * mathExpressions.length);
@@ -88,6 +112,7 @@ const randExp = () => {
     mathExp.innerHTML = `${expDisplay}`;
 
 }
+
 
 // randExp();
 
@@ -172,6 +197,7 @@ let gameOverMsg = document.getElementById("game-over-msg");
 
 const gameOver = () => {
     gameStatus.innerText = ``;
+    document.getElementById("submit-btn").disabled = true;
     nextButton.removeEventListener('click', nextExp);
 }
 
@@ -199,12 +225,18 @@ const resetGame = () => {
     compScore.innerText = compNum;
     document.getElementById("submit-btn").disabled = false;
     gameForm.reset();
+    // clearInterval(timerId);
+    timerEl.innerText = `0s`
+
 }
 
 resetButton.addEventListener('click', resetGame);
 
 // const timesUp = () => {
+//     compNum++
+//     compScore.innerText = compNum;
 //     document.getElementById("submit-btn").disabled = true;
+//     gameStatus.innerText = `Time's up! Professor P gets the point!`
 // }
 
 
