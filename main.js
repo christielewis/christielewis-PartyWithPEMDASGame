@@ -4,6 +4,7 @@ const nextButton = document.getElementById("next");
 
 const startButton = document.getElementById("start");
 const pauseButton = document.getElementById("pause");
+// const contButton = document.getElementById("continue");
 const resetButton = document.getElementById("reset");
 
 // Timer
@@ -28,6 +29,7 @@ const answerSubmit = (event) => {
     event.preventDefault();
     playerAns = event.target.answer.value;
     clearInterval(timerId);
+    timerEl.innerText = `0s`
 }
 
 const randNum = (min, max) => {
@@ -102,8 +104,17 @@ nextButton.addEventListener('click', nextExp);
 const startGame = () => {
     countdown(timeLeft);
 }
-
 startButton.addEventListener('click', startGame);
+
+// const pauseGame = () => {
+//     clearInterval(timerId);
+// }
+// pauseButton.addEventListener('click', pauseGame);
+
+// const contGame = () => {
+//     countdown
+// }
+// contButton.addEventListener('click', contGame);
 
 // let makeMath = {
     //     '**': function(x, numExpo) { return x ** numExpo},
