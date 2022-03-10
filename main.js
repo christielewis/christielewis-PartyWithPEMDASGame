@@ -1,4 +1,5 @@
 // Buttons
+// const submitBtn = document.getElementById("submit")
 const nextButton = document.getElementById("next");
 
 const startButton = document.getElementById("start");
@@ -9,7 +10,7 @@ const resetButton = document.getElementById("reset");
 // Timer
 let timerEl = document.getElementById("timer-num");
 // let timeGo = true;
-let timeLeft = 41;
+let timeLeft = 10;
 let timerId;
 let pauseTime;
 
@@ -18,6 +19,10 @@ const countdown = (time) => {
         if(time > 0) {
             time --;
             timerEl.innerText = `${time}s`
+            if(time === 0) {
+                // timesUp();
+                document.getElementById("submit-btn").disabled = true;
+            }
         }
     }, 1000);
 }
@@ -25,15 +30,20 @@ const countdown = (time) => {
 let playerAns;
 
 const answerSubmit = (event) => {
-    // console.log("Hello");
+    // submitBtn.disabled = false;
     event.preventDefault();
-    playerAns = parseInt(event.target.answer.value);
-
+    playerAns = parseFloat(event.target.answer.value);
     // console.log(typeof(playerAns));
-   
     clearInterval(timerId);
     timerEl.innerText = `0s`
     compareAnswers();
+    // if(timeLeft === 0) {
+    //     event.preventDefault();
+    // }
+    // if(timeLeft === 0) {
+    //     document.getElementById("submit-btn").disabled = true;
+    //     // timesUp();
+    // }
 }
 
 const randNum = (min, max) => {
@@ -92,11 +102,11 @@ const randExp = () => {
     // let mathSolutions = [sol1, sol2, sol3, sol4, sol5, sol6, sol7, sol8, sol9, sol10]
 
     let randomIdx = Math.floor(Math.random() * mathExpressions.length);
-    console.log(randomIdx);
+    // console.log(randomIdx);
     expDisplay = mathExpressions[randomIdx];
-    console.log(expDisplay);
+    // console.log(expDisplay);
     expSolution = mathSolutions[randomIdx];
-    // console.log(typeof(expSolution));
+    console.log(expSolution);
     mathExp.innerHTML = `${expDisplay}`;
 
 }
@@ -113,7 +123,8 @@ const nextExp = () => {
     if(timeLeft >= 5) {
         timeLeft -= 5;
     }
-    // clearInterval(timerId);
+    document.getElementById("submit-btn").disabled = false;
+    clearInterval(timerId);
     countdown(timeLeft);
     gameForm.reset();
 }
@@ -150,20 +161,20 @@ let compNum = 0;
 const compareAnswers = () => {
     // gameOver();
     if(playerAns === expSolution) {
-        if(playerNum < 2) {
+        if(playerNum < 10) {
             playerNum++;
             playerScore.innerText = playerNum;
-            if(playerNum === 2) {
+            if(playerNum === 10) {
                 gameOver();
                 gameOverMsg.innerText = `Game over. You win!`
             }
         }
         gameStatus.innerText = `Correct!`
     } else if (playerAns !== expSolution) {
-        if(compNum < 2) {
+        if(compNum < 10) {
             compNum++;
             compScore.innerText = compNum;
-            if(compNum === 2) {
+            if(compNum === 10) {
                 gameOver();
                 gameOverMsg.innerText = `Game over. You lost.`
             }
@@ -185,6 +196,7 @@ let gameOverMsg = document.getElementById("game-over-msg");
 // }
 
 const gameOver = () => {
+    gameStatus.innerText = ``;
     nextButton.removeEventListener('click', nextExp);
 }
 
@@ -210,10 +222,16 @@ const resetGame = () => {
     compNum = 0;
     playerScore.innerText = playerNum;
     compScore.innerText = compNum;
+    document.getElementById("submit-btn").disabled = false;
     gameForm.reset();
 }
 
 resetButton.addEventListener('click', resetGame);
+
+// const timesUp = () => {
+//     document.getElementById("submit-btn").disabled = true;
+// }
+
 
 // let makeMath = {
     //     '**': function(x, numExpo) { return x ** numExpo},
