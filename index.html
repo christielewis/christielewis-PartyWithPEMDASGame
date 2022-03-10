@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" async defer></script>
-    <title>Party with Professor PEMDAS</title>
+    <title>PEMDAS Party</title>
 </head>
 <body>
     <header>
@@ -35,8 +35,10 @@
         <h2 id="math-exp">
 
         </h2>
-        <input type="number" id="player-ans" value="">
-        <input type="submit" value="Submit">
+        <form onSubmit="answerSubmit(event)">
+            <input type="number" id="player-ans" name="answer"> 
+            <input type="submit" value="Submit">
+        </form>
         <button id="next">Next</button>
     </section>
     <section id="game-status">
