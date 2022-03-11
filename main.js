@@ -22,6 +22,10 @@ const countdown = (time) => {
                 document.getElementById("submit-btn").disabled = true;
                 compNum++;
                 compScore.innerText = compNum;
+                if(compNum === 10) {
+                    gameOver();
+                    gameOverMsg.innerText = `Game over. You lost.`
+                }
                 gameStatus.innerText = `Time's up! Professor P gets the point!`
             }
         }
@@ -224,9 +228,10 @@ const resetGame = () => {
     playerScore.innerText = playerNum;
     compScore.innerText = compNum;
     document.getElementById("submit-btn").disabled = false;
+    timeLeft = 41;
     gameForm.reset();
-    // clearInterval(timerId);
-    timerEl.innerText = `0s`
+    clearInterval(timerId);
+    timerEl.innerText = `40s`
 
 }
 
