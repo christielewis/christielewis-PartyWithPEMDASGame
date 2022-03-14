@@ -47,8 +47,22 @@ I currently hold a degree in Mathematical Sciences (Applied Mathematics). I was 
     * mathematical expressions are cleared.
 
 ## MVP Checklist
+* Functioning buttons:
+    * "Start" button starts timer, generates random expression with random numbers.
+    * "Next" button generates next mathematical expression
+    * "Submit" button takes user input and compares it to correct answer; affects scoreboard accordingly.
+    * "Reset" button that fully resets game.
+* A timer that decrements by 1.
+* Scoreboard that adds 1 to player score if answer is correct; adds 1 to Prof. PEMDAS score if incorrect.
+* Game Rules and PEMDAS rules on the screen.
 
 ## Stretch Goals
+* CSS
+* Time's Up function that removes 1 point from player score (once the player has more than 0 points) and adds 1 point to Professor PEMDAS' score.
 * Display correct answer on browser when player submits their answer.
 * Disable and Enable submit button.
 * Update Professor image with games status.
+
+## Code Snippets 
+
+###
