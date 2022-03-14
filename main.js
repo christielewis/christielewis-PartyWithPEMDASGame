@@ -261,6 +261,7 @@ const timesUp = () => {
         compScore.innerText = compNum;
         gameStatus.innerText = `Time's up! Professor P gets the point!`
     }
+    nextButton.addEventListener('click', nextExp)
     document.getElementById("submit-btn").disabled = true;
 }
 
