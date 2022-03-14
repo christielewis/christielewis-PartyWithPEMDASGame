@@ -1,16 +1,18 @@
+document.getElementById("submit-btn").disabled = true;
+
 // Buttons
 const nextButton = document.getElementById("next");
 
 const startButton = document.getElementById("start");
-// const pauseButton = document.getElementById("pause");
-// const contButton = document.getElementById("continue");
+const pauseButton = document.getElementById("pause");
+const contButton = document.getElementById("continue");
 const resetButton = document.getElementById("reset");
 
 // Timer
 let timerEl = document.getElementById("timer-num");
 let timeLeft = 41;
 let timerId;
-let pauseTime;
+// let pauseTime;
 
 const countdown = (time) => {
     timerId = setInterval(function() {
@@ -18,15 +20,18 @@ const countdown = (time) => {
             time --;
             timerEl.innerText = `${time}s`
             if(time === 0) {
-                // timesUp();
-                document.getElementById("submit-btn").disabled = true;
-                compNum++;
-                compScore.innerText = compNum;
+                timesUp();
+                // document.getElementById("submit-btn").disabled = true;
+                // compNum++;
+                // compScore.innerText = compNum;
+                // playerNum--
+                // playerScore.innerText = playerNum;
                 if(compNum === 10) {
                     gameOver();
                     gameOverMsg.innerText = `Game over. You lost.`
                 }
-                gameStatus.innerText = `Time's up! Professor P gets the point!`
+                // gameStatus.innerText = `Time's up! Professor P gets the point and you lost one.`
+                // entering nothing is better than letting time run out bc you dont lose a point if you submit no answer
             }
         }
     }, 1000);
@@ -41,6 +46,12 @@ const answerSubmit = (event) => {
     clearInterval(timerId);
     timerEl.innerText = `0s`
     compareAnswers();
+    if(playerAns === NaN || playerAns === ``) {
+        compNum++;
+        compScore.innerText = compScore;
+    }
+    mathExpSol.innerText = `${expSolution}`;
+    document.getElementById("submit-btn").disabled = true;
 }
 
 const randNum = (min, max) => {
@@ -51,13 +62,13 @@ let expDisplay = null;
 let expSolution = null;
 
 let mathExp = document.getElementById("math-exp");
+let mathExpSol = document.getElementById("math-exp-sol");
 
 // Pick random expression
 const randExp = () => {
     let num1 = randNum(0, 12);
     let num2 = randNum(0, 12);
     let num3 = randNum(0, 12);
-    let num4 = randNum(0, 12);
     let numExpo = randNum(0, 2);
 
     let mathExpressions = [
@@ -132,6 +143,7 @@ const nextExp = () => {
     clearInterval(timerId);
     countdown(timeLeft);
     gameForm.reset();
+    mathExpSol.innerText = ``;
 }
 nextButton.addEventListener('click', nextExp);
 
@@ -139,6 +151,9 @@ const startGame = () => {
     randExp();
     countdown(timeLeft);
     nextButton.addEventListener('click', nextExp);
+    document.getElementById("submit-btn").disabled = false;
+
+    startButton.removeEventListener('click', startGame);
 }
 startButton.addEventListener('click', startGame);
 
@@ -148,8 +163,8 @@ startButton.addEventListener('click', startGame);
 // pauseButton.addEventListener('click', pauseGame);
 
 // const contGame = () => {
-//     pauseTime = timeLeft;
-//     countdown(pauseTime);
+//     // pauseTime = timeLeft;
+//     countdown(timerEl);
 // }
 // contButton.addEventListener('click', contGame);
 
@@ -173,7 +188,7 @@ const compareAnswers = () => {
                 gameOverMsg.innerText = `Game over. You win!`
             }
         }
-        gameStatus.innerText = `Correct!`
+        gameStatus.innerText = `Yay! You answer is correct!`
     } else if (playerAns !== expSolution) {
         if(compNum < 10) {
             compNum++;
@@ -183,7 +198,7 @@ const compareAnswers = () => {
                 gameOverMsg.innerText = `Game over. You lost.`
             }
         }
-        gameStatus.innerText = `Incorrect!`
+        gameStatus.innerText = `Sorry, your answer is incorrect!`
     }
 }
 
@@ -227,22 +242,31 @@ const resetGame = () => {
     compNum = 0;
     playerScore.innerText = playerNum;
     compScore.innerText = compNum;
-    document.getElementById("submit-btn").disabled = false;
+    document.getElementById("submit-btn").disabled = true;
     timeLeft = 41;
     gameForm.reset();
     clearInterval(timerId);
     timerEl.innerText = `40s`
-
+    mathExpSol.innerText = ``;
+    startButton.addEventListener('click', startGame);
 }
 
 resetButton.addEventListener('click', resetGame);
 
-// const timesUp = () => {
-//     compNum++
-//     compScore.innerText = compNum;
-//     document.getElementById("submit-btn").disabled = true;
-//     gameStatus.innerText = `Time's up! Professor P gets the point!`
-// }
+const timesUp = () => {
+    if(playerNum > 0) {
+        compNum++
+        compScore.innerText = compNum;
+        playerNum--
+        playerScore.innerText = playerNum;
+        gameStatus.innerText = `Time's up! Professor P gets the point and you lose one!`
+    } else if(playerNum === 0) {
+        compNum++
+        compScore.innerText = compNum;
+        gameStatus.innerText = `Time's up! Professor P gets the point!`
+    }
+    document.getElementById("submit-btn").disabled = true;
+}
 
 
 // let makeMath = {

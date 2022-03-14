@@ -1,16 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Fredericka+the+Great&family=Margarine&display=swap');
+
 body{
-    background-image: url("https://media.istockphoto.com/vectors/empty-classroom-interior-school-or-college-class-vector-id1205276835?k=20&m=1205276835&s=612x612&w=0&h=bNFYTykClMRk9xCDj6zdEgUHEH6YGNqwRGI0trSRCUk=");
+    background-image: url("https://media.istockphoto.com/vectors/school-classroom-interior-with-desk-and-board-lesson-empty-university-vector-id1211580963?k=20&m=1211580963&s=612x612&w=0&h=XTqcp7aP_Gh-4iPJo4RYAtzfN7M3WP4zE7IOuLlV6Nw=");
+    /* background-image: url("https://media.istockphoto.com/vectors/empty-classroom-interior-school-or-college-class-vector-id1205276835?k=20&m=1205276835&s=612x612&w=0&h=bNFYTykClMRk9xCDj6zdEgUHEH6YGNqwRGI0trSRCUk="); */
     background-size: cover;
     text-align: center;
 }
 
+header {
+    font-family: 'Margarine', cursive;
+    position: absolute;
+    top: 220px;
+    left: 770px;
+    color: white;
+}
+
+button {
+    background-color: transparent;
+    color: white;
+    /* font-family: 'Caveat Brush', cursive; */
+    font-family: 'Margarine', cursive;
+    border: 1px solid white;
+    border-radius: 20px;
+}
+
+input {
+    background-color: transparent;
+    font-family: 'Caveat Brush', cursive;
+    border: 1px solid white;
+    border-radius: 20px;
+    color: white;
+}
+
+input[type="submit"] {
+    background-color: transparent;
+    color: white;
+    /* font-family: 'Caveat Brush', cursive; */
+    font-family: 'Margarine', cursive;
+    border: 1px solid white;
+    border-radius: 20px;
+}
+
 a {
     text-decoration: none;
+    color: white;
 }
 
 a:hover {
     text-decoration: underline;
 }
+
+footer {
+    /* color: white; */
+    position: absolute;
+    bottom: 20px;
+    left: 900px;
+    font-family: 'Caveat Brush', cursive;
+}
+
+h4 {
+    color: white;
+    /* font-family: 'Caveat Brush', cursive; */
+    font-family: 'Margarine', cursive;
+    font-size: 18px;
+}
+
+/* ul {
+    color: white;
+    font-family: 'Caveat Brush', cursive;
+    font-family: 'Margarine', cursive;
+} */
+
+/* li {
+    color: white;
+    font-family: 'Caveat Brush', cursive;
+    font-family: 'Margarine', cursive;
+} */
 
 .social {
     display: inline;
@@ -22,4 +87,97 @@ a:hover {
 
 #you {
     padding-right: 10px;
+}
+#game-rules {
+    position: absolute;
+    top: 220px;
+    left: 350px;
+    color: white;
+    /* font-family: 'Caveat Brush', cursive; */
+    font-family: 'Margarine', cursive;
+    font-size: 12px;
+}
+
+/* #game-board {
+    position: absolute;
+    top: 400px;
+    left: 880px;
+} */
+
+#math-exp {
+    position: absolute;
+    top: 400px;
+    left: 875px;
+    color: white;
+    /* font-family: 'Margarine', cursive; */
+    font-family: 'Caveat Brush', cursive;
+}
+
+#math-exp-sol-sec {
+    position: absolute;
+    top: 500px;
+    left: 820px;
+    color: white;
+    /* font-family: 'Margarine', cursive; */
+    font-family: 'Caveat Brush', cursive;
+}
+
+#next {
+    position: absolute;
+    top: 480px;
+    right: 840px;
+}
+
+form {
+    position: absolute;
+    top: 480px;
+    left: 850px;
+}
+
+#pemdas-rules {
+    position: absolute;
+    top: 230px;
+    right: 380px;
+    color: white;
+    /* font-family: 'Caveat Brush', cursive; */
+    font-family: 'Margarine', cursive;
+    font-size: 18px;
+}
+
+#timer {
+    position: absolute;
+    top: 350px;
+    left: 775px;
+    color: white;
+    /* font-family: 'Caveat Brush', cursive; */
+    font-family: 'Margarine', cursive;
+}
+
+#scoreboard {
+    position: absolute;
+    top: 325px;
+    right: 675px;
+    color: white;
+    /* font-family: 'Caveat Brush', cursive; */
+    font-family: 'Margarine', cursive;
+}
+
+#control-center {
+    position: absolute;
+    top: 565px; /* 565 is where next button ends up after game starts*/
+    left: 910px;
+}
+
+#game-status {
+    position: absolute;
+    top: 390px;
+    left: 875px;
+    color: white;
+    font-family: 'Margarine', cursive;
+}
+
+#prof-gifs {
+    position: absolute;
+    bottom: 150px;
+    left: 200px;
 }
