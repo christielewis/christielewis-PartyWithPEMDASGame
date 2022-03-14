@@ -12,13 +12,15 @@ I currently hold a degree in Mathematical Sciences (Applied Mathematics). I was 
 
 ### Game Rules
 * Accurately calculate the expressions that will show up on the page, using PEMDAS (Order of operations), within the time given.
-* Expressions start as 3 ramdomly generated numbers with 2 operations.
-* Computer wins a point if you don't enter the answer within the time given.
-* Get 1 correct, your count goes up by 1. Get it incorrect, the computer wins and it's count goes up by 1.
-* You get less time with each question answered correctly.
-* Get 5 correct, the experssions become harder (4 randomly generated numbers with 3 operations).
-* Get 10 correct, game over; you win the game.
-* If the computer gets to 10, game over; you lose the game.
+* Player wins 1 point if you answer correctly.
+* Professor PEMDAS wins 1 point if:
+    * player answers incorrectly.
+    * player doesn't enter the answer within the allotted time.
+    * player enters something that is not a number (Infinity is a number and therefore can be entered).
+* Player also loses 1 point if time runs out.
+* Player's allotted time decreases by 5 seconds with each answer entered; decrement stops once allotted time reaches 15 seconds per problem.
+* If player get 10 correct, game over; they win the game.
+* If Professor PEMDAS gets to 10, game over; player loses the game.
 
 ### User Stories
 * Player will click "Start" button.
