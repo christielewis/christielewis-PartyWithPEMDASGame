@@ -65,11 +65,9 @@ h4 {
     font-size: 18px;
 }
 
-/* ul {
-    color: white;
-    font-family: 'Caveat Brush', cursive;
-    font-family: 'Margarine', cursive;
-} */
+#pemdas-rules ul {
+    list-style-type: none;
+}
 
 /* li {
     color: white;
