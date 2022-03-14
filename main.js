@@ -21,16 +21,10 @@ const countdown = (time) => {
             timerEl.innerText = `${time}s`
             if(time === 0) {
                 timesUp();
-                // document.getElementById("submit-btn").disabled = true;
-                // compNum++;
-                // compScore.innerText = compNum;
-                // playerNum--
-                // playerScore.innerText = playerNum;
                 if(compNum === 10) {
                     gameOver();
                     gameOverMsg.innerText = `Game over. You lost.`
                 }
-                // gameStatus.innerText = `Time's up! Professor P gets the point and you lost one.`
                 // entering nothing is better than letting time run out bc you dont lose a point if you submit no answer
             }
         }
@@ -51,6 +45,7 @@ const answerSubmit = (event) => {
         compScore.innerText = compScore;
     }
     mathExpSol.innerText = `${expSolution}`;
+    nextButton.addEventListener('click', nextExp);
     document.getElementById("submit-btn").disabled = true;
 }
 
@@ -125,7 +120,6 @@ const randExp = () => {
     expSolution = mathSolutions[randomIdx];
     console.log(expSolution);
     mathExp.innerHTML = `${expDisplay}`;
-
 }
 
 
@@ -144,6 +138,7 @@ const nextExp = () => {
     countdown(timeLeft);
     gameForm.reset();
     mathExpSol.innerText = ``;
+    nextButton.removeEventListener('click', nextExp);
 }
 nextButton.addEventListener('click', nextExp);
 
@@ -254,6 +249,7 @@ const resetGame = () => {
 resetButton.addEventListener('click', resetGame);
 
 const timesUp = () => {
+    mathExpSol.innerText = `${expSolution}`;
     if(playerNum > 0) {
         compNum++
         compScore.innerText = compNum;
