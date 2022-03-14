@@ -62,6 +62,7 @@ I currently hold a degree in Mathematical Sciences (Applied Mathematics). I was 
 
 ## Stretch Goals
 * CSS
+* CSS for adjusted browser size (@media section in CSS)
 * Decrement timer by 5 seconds (until time per problem is 15 seconds) when "Next" button is clicked.
 * Time's Up function that removes 1 point from player score (once the player has more than 0 points) and adds 1 point to Professor PEMDAS' score.
 * Add conditional: if player inputs anything that isn't a number, Professor PEMDAS gets 1 point.
